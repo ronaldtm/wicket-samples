@@ -50,7 +50,6 @@ public class SourcePage extends WebPage {
     private String resourceAsString(Class<?> pageClass, String resourcePath) throws IOException {
         InputStream input = null;
         try {
-            System.out.println(pageClass + "/" + resourcePath);
             input = pageClass.getResourceAsStream(resourcePath);
             return IOUtils.toString(input);
         } finally {

@@ -18,7 +18,8 @@ public class IndexPage extends BasePage {
     public IndexPage() {
 
         List<PageBean> links = Arrays.asList(
-            new PageBean(SimpleFormPage.class, "Simple form", ""));
+            new PageBean(SimpleFormPage.class, "Simple form", ""),
+            new PageBean(AjaxFormPage.class, "Ajax form", ""));
 
         add(new ListView<PageBean>("links", Model.ofList(links)) {
             private static final long serialVersionUID = -757689351285493796L;

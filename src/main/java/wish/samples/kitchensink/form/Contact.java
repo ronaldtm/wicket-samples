@@ -19,6 +19,6 @@ public class Contact implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("Contact: %s (%s), %3$tY-%3$tm-%3$td", name, email, birthDate);
+        return String.format("Contact: %s (%s), %3$td-%3$tm-%3$tY", name, email, birthDate);
     }
 }

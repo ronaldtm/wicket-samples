@@ -2,6 +2,8 @@ package wish.samples.kitchensink.base;
 
 import org.apache.wicket.IPageMap;
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.devutils.inspector.InspectorPage;
+import org.apache.wicket.devutils.inspector.LiveSessionsPage;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
@@ -46,6 +48,11 @@ public abstract class BasePage extends WebPage {
     protected void init() {
         Highligher.addHeaderContributions(this);
         add(createSourceLink("source"));
+
+        add(new BookmarkablePageLink<Void>("inspector", InspectorPage.class)
+            .setPopupSettings(defaultPopupSettings("inspector")));
+        add(new BookmarkablePageLink<Void>("sessions", LiveSessionsPage.class)
+            .setPopupSettings(defaultPopupSettings("sessions")));
     }
 
     private Link<?> createSourceLink(String id) {
@@ -53,12 +60,14 @@ public abstract class BasePage extends WebPage {
         params.add("page", getClass().getName());
 
         Link<?> link = new BookmarkablePageLink<Void>(id, SourcePage.class, params);
-
-        PopupSettings popupSettings = new PopupSettings(PopupSettings.RESIZABLE | PopupSettings.SCROLLBARS);
-        popupSettings.setWindowName("sourceCode");
-        popupSettings.setTarget("sourceCode");
-        link.setPopupSettings(popupSettings);
-
+        link.setPopupSettings(defaultPopupSettings("sourceCode"));
         return link;
+    }
+
+    private PopupSettings defaultPopupSettings(String target) {
+        PopupSettings popupSettings = new PopupSettings(PopupSettings.RESIZABLE | PopupSettings.SCROLLBARS);
+        popupSettings.setWindowName(target);
+        popupSettings.setTarget(target);
+        return popupSettings;
     }
 }
