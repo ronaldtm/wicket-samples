@@ -5,6 +5,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
 
 import wish.samples.kitchensink.base.BasePage;
@@ -12,12 +13,10 @@ import wish.samples.kitchensink.base.BasePage;
 @SuppressWarnings("unchecked")
 public class SimpleFormPage extends BasePage {
 
-    String name;
-    String email;
+    Contact contact = new Contact();
 
     public SimpleFormPage() {
-
-        Form form = new Form("form", new CompoundPropertyModel(this));
+        Form form = new Form("form", new CompoundPropertyModel(new PropertyModel(this, "contact")));
 
         form.add(new TextField("name").setRequired(true));
         form.add(new TextField("email").setRequired(true).add(EmailAddressValidator.getInstance()));
@@ -26,7 +25,7 @@ public class SimpleFormPage extends BasePage {
             private static final long serialVersionUID = -3259847450071890320L;
             @Override
             public void onSubmit() {
-                info(String.format("Name=%s; Email=%s", name, email));
+                info(contact.toString());
             }
         });
 
