@@ -17,7 +17,12 @@ public class SimpleFormPage extends BasePage {
     Contact contact = new Contact();
 
     public SimpleFormPage() {
+
+        FeedbackPanel feedback = new FeedbackPanel("feedback");
+        add(feedback);
+
         Form form = new Form("form", new CompoundPropertyModel(new PropertyModel(this, "contact")));
+        add(form);
 
         form.add(new TextField("name").setRequired(true));
         form.add(new TextField("email").setRequired(true).add(EmailAddressValidator.getInstance()));
@@ -28,10 +33,8 @@ public class SimpleFormPage extends BasePage {
             @Override
             public void onSubmit() {
                 info(contact.toString());
+                contact = new Contact();
             }
         });
-
-        add(form);
-        add(new FeedbackPanel("feedback"));
     }
 }

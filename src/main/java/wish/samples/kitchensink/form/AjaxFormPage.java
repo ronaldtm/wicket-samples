@@ -17,14 +17,13 @@ public class AjaxFormPage extends BasePage {
 
     Contact contact = new Contact();
 
-    FeedbackPanel feedback;
-
     public AjaxFormPage() {
-        feedback = new FeedbackPanel("feedback");
-        feedback.setOutputMarkupId(true);
-        
+
+        final FeedbackPanel feedback = new FeedbackPanel("feedback");
+        add(feedback.setOutputMarkupId(true));
+
         Form form = new Form("form", new CompoundPropertyModel(new PropertyModel(this, "contact")));
-        form.setOutputMarkupId(true);
+        add(form.setOutputMarkupId(true));
 
         form.add(new TextField("name").setRequired(true));
         form.add(new TextField("email").setRequired(true).add(EmailAddressValidator.getInstance()));
@@ -40,8 +39,5 @@ public class AjaxFormPage extends BasePage {
                 target.addComponent(feedback);
             }
         });
-
-        add(form);
-        add(feedback);
     }
 }
