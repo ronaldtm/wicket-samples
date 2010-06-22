@@ -43,6 +43,7 @@ public class App extends WebApplication {
         getSessionSettings().setPageMapEvictionStrategy(new LeastRecentlyAccessedEvictionStrategy(3));
 
         mountPackage("form");
+        mountPackage("ajax");
 
         mount(new QueryStringUrlCodingStrategy("debug/inspector", InspectorPage.class));
         mount(new QueryStringUrlCodingStrategy("debug/sessions", LiveSessionsPage.class));

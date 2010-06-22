@@ -1,4 +1,4 @@
-package wish.samples.kitchensink.home;
+package wish.samples.kitchensink.ajax;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,12 +14,11 @@ import org.apache.wicket.model.Model;
 import wish.samples.kitchensink.base.BasePage;
 
 @SuppressWarnings("unchecked")
-public class HomePage extends BasePage {
-    public HomePage() {
+public class IndexPage extends BasePage {
+    public IndexPage() {
 
         List<PageBean> links = Arrays.asList(
-            new PageBean(wish.samples.kitchensink.form.IndexPage.class, "form", ""),
-            new PageBean(wish.samples.kitchensink.ajax.IndexPage.class, "ajax", ""));
+            new PageBean(AutocompletePage.class, "Palette", ""));
 
         add(new ListView<PageBean>("links", Model.ofList(links)) {
             private static final long serialVersionUID = -757689351285493796L;
