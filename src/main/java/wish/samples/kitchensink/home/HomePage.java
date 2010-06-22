@@ -17,6 +17,8 @@ public class HomePage extends BasePage {
 
     public HomePage() {
         add(new ListView<PageCategory>("categories", App.get().getPageCategories()) {
+            private static final long serialVersionUID = -7402552099056811629L;
+
             @Override
             protected void populateItem(ListItem<PageCategory> item) {
                 item.setModel(new CompoundPropertyModel(item.getModel()));

@@ -62,6 +62,8 @@ public abstract class BasePage extends WebPage {
             .setPopupSettings(defaultPopupSettings("sessions")));
 
         add(new Label("pageTitle", new PropertyModel<String>(this, "pageTitle")) {
+            private static final long serialVersionUID = 2648512779130255302L;
+
             @Override
             public boolean isVisible() {
                 return super.isVisible() && StringUtils.trimToNull(getDefaultModelObjectAsString()) != null;
