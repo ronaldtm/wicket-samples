@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Contact implements Serializable {
+    private static final long serialVersionUID = -9174551543628264659L;
+
     public String name;
     public String email;
     public Date birthDate;
