@@ -4,20 +4,25 @@
   
     <div id="accordion">
       <wicket:container wicket:id="categories">
-        <h3><a href="#" wicket:id="category"></a></h3>
+        <h3><a href="#" wicket:id="title"></a></h3>
         <div>
-          <ul>
-            <li wicket:id="link"></li>
-          </ul>
+          <table>
+            <tbody>
+              <tr wicket:id="links">
+                <td>
+                  <a wicket:id="link">
+                    <span wicket:id="title"></span>
+                  </a>
+                </td>
+                <td>
+                  <span wicket:id="description"></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </wicket:container>
     </div>
-    <ul>
-      <li wicket:id="links">
-        <a wicket:id="link"><span wicket:id="title"></span></a>
-        <span wicket:id="description"></span>
-      </li>
-    </ul>
   </wicket:extend>
 </body>
 </html>

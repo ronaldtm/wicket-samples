@@ -7,8 +7,8 @@ import org.apache.wicket.markup.html.CSSPackageResource;
 import org.apache.wicket.markup.html.JavascriptPackageResource;
 
 public class JQuery {
-    private static final HeaderContributor HEADER_CONTRIBUTION_JQUERY_UI_SMOOTHNESS_CSS = CSSPackageResource
-        .getHeaderContribution("http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/smoothness/jquery-ui.css");
+    private static final HeaderContributor HEADER_CONTRIBUTION_JQUERY_UI_CSS = CSSPackageResource
+        .getHeaderContribution("http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/cupertino/jquery-ui.css");
     private static final HeaderContributor HEADER_CONTRIBUTION_JQUERY_UI_JS = JavascriptPackageResource
         .getHeaderContribution("http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js");
     private static final HeaderContributor HEADER_CONTRIBUTION_JQUERY_JS = JavascriptPackageResource
@@ -17,7 +17,7 @@ public class JQuery {
     public static void addHeaderContributionsTo(Component component) {
         component.add(HEADER_CONTRIBUTION_JQUERY_JS);
         component.add(HEADER_CONTRIBUTION_JQUERY_UI_JS);
-        component.add(HEADER_CONTRIBUTION_JQUERY_UI_SMOOTHNESS_CSS);
+        component.add(HEADER_CONTRIBUTION_JQUERY_UI_CSS);
     }
 
     public static JQueryReadyHeaderContributor ready(String... scriptLines) {
@@ -29,6 +29,7 @@ public class JQuery {
     }
 
     public static String $(Component target, String... scriptLines) {
+        target.setOutputMarkupId(true);
         return "$('#" + target.getMarkupId() + "')" + StringUtils.join(scriptLines, "\n");
     }
 

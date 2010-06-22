@@ -23,6 +23,7 @@ public class JQueryReadyHeaderContributor extends TextTemplateHeaderContributor 
     }
     public JQueryReadyHeaderContributor(Component target, String... scriptLines) {
         this("$('#" + target.getMarkupId() + "')." + StringUtils.join(scriptLines, "\n"));
+        target.setOutputMarkupId(true);
     }
     @SuppressWarnings("unchecked")
     private static IModel<Map<String, Object>> toMapModel(String key, String value) {

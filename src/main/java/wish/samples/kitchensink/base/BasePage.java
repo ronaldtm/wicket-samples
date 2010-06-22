@@ -10,6 +10,7 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.link.PopupSettings;
 import org.apache.wicket.model.IModel;
 
+import wish.samples.kitchensink.base.jquery.JQuery;
 import wish.samples.kitchensink.source.SourcePage;
 
 public abstract class BasePage extends WebPage {
@@ -45,6 +46,7 @@ public abstract class BasePage extends WebPage {
     }
 
     protected void init() {
+        JQuery.addHeaderContributionsTo(this);
         add(createSourceLink("source"));
 
         add(new BookmarkablePageLink<Void>("inspector", InspectorPage.class)

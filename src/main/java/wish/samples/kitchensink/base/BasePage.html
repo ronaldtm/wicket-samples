@@ -1,12 +1,33 @@
 <html xmlns:wicket="http://wicket.apache.org">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wicket Samples - Kitchen Sink</title>
+  <style type="text/css">
+    body {
+      font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      font-size: 70%;
+    }
+    #header {
+      font-size: 14px;
+      padding: .5em;
+    }
+    #header h3 {
+      display: inline;
+    }
+    #metaControls {
+      text-align: right;
+      1float: right;
+    }
+  </style>
 </head>
 <body>
 
   <div id="body">
 
-    <div id="header">
+    <div id="header" class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-top">
+      <h3>Wicket Samples - Kitchen Sink</h3>
+    </div>
+    <div id="metaControls">
       [<a wicket:id="source">source code</a>]
       [<a wicket:id="inspector">inspector</a>]
       [<a wicket:id="sessions">sessions</a>]
