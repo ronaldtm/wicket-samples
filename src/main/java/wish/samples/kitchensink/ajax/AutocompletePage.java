@@ -22,6 +22,8 @@ public class AutocompletePage extends BasePage {
 
     public AutocompletePage() {
 
+        setPageTitle("Autocomplete");
+
         Form form = new Form("form", new CompoundPropertyModel(this));
 
         AutoCompleteSettings settings = new AutoCompleteSettings();

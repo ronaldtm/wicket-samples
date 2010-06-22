@@ -18,6 +18,8 @@ public class SimpleFormPage extends BasePage {
 
     public SimpleFormPage() {
 
+        setPageTitle("Simple Form");
+
         FeedbackPanel feedback = new FeedbackPanel("feedback");
         add(feedback);
 
