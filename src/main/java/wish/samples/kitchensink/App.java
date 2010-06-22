@@ -1,13 +1,17 @@
 package wish.samples.kitchensink;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.wicket.Page;
 import org.apache.wicket.Request;
 import org.apache.wicket.Response;
 import org.apache.wicket.Session;
 import org.apache.wicket.devutils.inspector.InspectorPage;
 import org.apache.wicket.devutils.inspector.LiveSessionsPage;
+import org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadWebRequest;
 import org.apache.wicket.protocol.http.HttpSessionStore;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.protocol.http.WebRequest;
 import org.apache.wicket.request.target.coding.QueryStringUrlCodingStrategy;
 import org.apache.wicket.session.ISessionStore;
 import org.apache.wicket.session.pagemap.LeastRecentlyAccessedEvictionStrategy;
@@ -58,6 +62,11 @@ public class App extends WebApplication {
         } catch (ClassNotFoundException ex) {
             throw new IllegalArgumentException(ex.getMessage(), ex);
         }
+    }
+    
+    @Override
+    protected WebRequest newWebRequest(HttpServletRequest servletRequest) {
+        return new UploadWebRequest(servletRequest);
     }
 
     @Override

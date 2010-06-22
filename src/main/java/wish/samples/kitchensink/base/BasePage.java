@@ -10,7 +10,6 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.link.PopupSettings;
 import org.apache.wicket.model.IModel;
 
-import wish.samples.kitchensink.base.highlighter.Highligher;
 import wish.samples.kitchensink.source.SourcePage;
 
 public abstract class BasePage extends WebPage {
@@ -46,7 +45,6 @@ public abstract class BasePage extends WebPage {
     }
 
     protected void init() {
-        Highligher.addHeaderContributions(this);
         add(createSourceLink("source"));
 
         add(new BookmarkablePageLink<Void>("inspector", InspectorPage.class)

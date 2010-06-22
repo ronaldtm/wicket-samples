@@ -18,7 +18,8 @@ public class IndexPage extends BasePage {
     public IndexPage() {
 
         List<PageBean> links = Arrays.asList(
-            new PageBean(AutocompletePage.class, "Palette", ""));
+            new PageBean(AutocompletePage.class, "Auto-Complete", ""),
+            new PageBean(AjaxFileUploadPage.class, "File Upload", ""));
 
         add(new ListView<PageBean>("links", Model.ofList(links)) {
             private static final long serialVersionUID = -757689351285493796L;
