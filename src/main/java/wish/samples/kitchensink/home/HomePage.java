@@ -2,6 +2,7 @@ package wish.samples.kitchensink.home;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.wicket.IClusterable;
 import org.apache.wicket.Page;
@@ -11,10 +12,15 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.Model;
 
+import com.google.common.collect.Maps;
+
 import wish.samples.kitchensink.base.BasePage;
 
 @SuppressWarnings("unchecked")
 public class HomePage extends BasePage {
+    
+    Map<String, List<PageBean>> links = Maps.newLinkedHashMap();
+    
     public HomePage() {
 
         List<PageBean> links = Arrays.asList(
