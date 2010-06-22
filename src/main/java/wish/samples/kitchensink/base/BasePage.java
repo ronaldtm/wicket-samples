@@ -1,19 +1,24 @@
 package wish.samples.kitchensink.base;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.IPageMap;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.devutils.inspector.InspectorPage;
 import org.apache.wicket.devutils.inspector.LiveSessionsPage;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.link.PopupSettings;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 
 import wish.samples.kitchensink.base.jquery.JQuery;
 import wish.samples.kitchensink.source.SourcePage;
 
 public abstract class BasePage extends WebPage {
+
+    private String pageTitle = "";
 
     public BasePage() {
         super();
@@ -47,12 +52,21 @@ public abstract class BasePage extends WebPage {
 
     protected void init() {
         JQuery.addHeaderContributionsTo(this);
-        add(createSourceLink("source"));
 
+        add(new BookmarkablePageLink<Void>("homeLink", getApplication().getHomePage()));
+
+        add(createSourceLink("source"));
         add(new BookmarkablePageLink<Void>("inspector", InspectorPage.class)
             .setPopupSettings(defaultPopupSettings("inspector")));
         add(new BookmarkablePageLink<Void>("sessions", LiveSessionsPage.class)
             .setPopupSettings(defaultPopupSettings("sessions")));
+
+        add(new Label("pageTitle", new PropertyModel<String>(this, "pageTitle")) {
+            @Override
+            public boolean isVisible() {
+                return super.isVisible() && StringUtils.trimToNull(getDefaultModelObjectAsString()) != null;
+            }
+        }.add(JQuery.ready("$('#content').accordion()")));
     }
 
     private Link<?> createSourceLink(String id) {
@@ -69,5 +83,13 @@ public abstract class BasePage extends WebPage {
         popupSettings.setWindowName(target);
         popupSettings.setTarget(target);
         return popupSettings;
+    }
+
+    public String getPageTitle() {
+        return pageTitle;
+    }
+
+    public void setPageTitle(String pageTitle) {
+        this.pageTitle = pageTitle;
     }
 }

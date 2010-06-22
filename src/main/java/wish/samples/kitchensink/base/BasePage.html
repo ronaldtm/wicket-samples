@@ -25,7 +25,7 @@
   <div id="body">
 
     <div id="header" class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-top">
-      <h3>Wicket Samples - Kitchen Sink</h3>
+      <h3><a wicket:id="homeLink">Wicket Samples - Kitchen Sink</a></h3>
     </div>
     <div id="metaControls">
       [<a wicket:id="source">source code</a>]
@@ -34,7 +34,10 @@
     </div>
 
     <div id="content">
-      <wicket:child/>
+      <h3><a href="#" wicket:id="pageTitle"></a></h3>
+      <div>
+        <wicket:child/>
+      </div>
     </div>
 
   </div>
