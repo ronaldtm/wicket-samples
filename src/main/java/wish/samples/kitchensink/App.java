@@ -96,12 +96,13 @@ public class App extends WebApplication {
             );
         categories.add(new PageCategory("ajax", "Ajax")
             .add(AutocompletePage.class, "Auto-Complete", "Show matching options while you type")
-            .add(AjaxFileUploadPage.class, "File Upload", "")
+            .add(AjaxFileUploadPage.class, "File Upload", "Upload a file in an 'ajax-like' request")
             );
         return categories;
     }
 
-    public static class PageCategory {
+    public static class PageCategory implements IClusterable {
+        private static final long serialVersionUID = -1209873707198411368L;
         public final String path;
         public final String title;
         public final List<PageItem> links = Lists.newArrayList();

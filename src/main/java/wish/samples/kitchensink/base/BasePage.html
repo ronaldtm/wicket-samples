@@ -18,6 +18,19 @@
       text-align: right;
       1float: right;
     }
+    #menu {
+      float: left;
+      width: 15em;
+    }
+    #menu div {
+      padding: 1em 1em;
+    }
+    #content {
+      margin-left: 16em;
+    }
+    table {
+      font-size: 100%;
+    }
   </style>
 </head>
 <body>
@@ -33,6 +46,25 @@
       [<a wicket:id="sessions">sessions</a>]
     </div>
 
+    <div id="menu">
+      <wicket:container wicket:id="categories">
+        <h3><a href="#" wicket:id="title"></a></h3>
+        <div>
+          <table>
+            <tbody>
+              <tr wicket:id="links">
+                <td>
+                  <a wicket:id="link">
+                    <span wicket:id="title"></span>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </wicket:container>
+    </div>
+
     <div id="content">
       <h3><a href="#" wicket:id="pageTitle"></a></h3>
       <div>
@@ -42,5 +74,15 @@
 
   </div>
 
+  <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+    try{ 
+      var pageTracker = _gat._getTracker("UA-17118614-1");
+      pageTracker._trackPageview();
+    } catch(err) {} 
+  </script>
 </body>
 </html>
