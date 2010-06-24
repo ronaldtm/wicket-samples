@@ -11,8 +11,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.protocol.http.servlet.AbortWithWebErrorCodeException;
 import org.apache.wicket.util.io.IOUtils;
 
-import wish.samples.kitchensink.base.highlighter.SourceCodePanel;
-import wish.samples.kitchensink.base.jquery.TabPanel;
+import wish.samples.kitchensink.base.component.TabPanel;
 
 @SuppressWarnings("unchecked")
 public class SourcePage extends WebPage {

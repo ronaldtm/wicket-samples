@@ -1,4 +1,4 @@
-package wish.samples.kitchensink.base.jquery;
+package wish.samples.kitchensink.base.component;
 
 import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.markup.html.WebMarkupContainerWithAssociatedMarkup;
@@ -6,6 +6,8 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.RepeatingView;
+
+import wish.samples.kitchensink.base.jquery.JQuery;
 
 public class TabPanel extends Panel {
     private static final long serialVersionUID = -8108028474236834120L;
