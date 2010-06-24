@@ -27,6 +27,8 @@ import wish.samples.kitchensink.ajax.AutocompletePage;
 import wish.samples.kitchensink.form.AjaxFormPage;
 import wish.samples.kitchensink.form.SimpleFormPage;
 import wish.samples.kitchensink.home.HomePage;
+import wish.samples.kitchensink.layout.FragmentPage;
+import wish.samples.kitchensink.layout.PanelPage;
 
 import com.google.common.collect.Lists;
 
@@ -105,6 +107,10 @@ public class App extends WebApplication {
         categories.add(new PageCategory("ajax", "Ajax")
             .add(AutocompletePage.class, "Auto-Complete", "Show matching options while you type")
             .add(AjaxFileUploadPage.class, "File Upload", "Upload a file in an 'ajax-like' request")
+            );
+        categories.add(new PageCategory("layout", "Layout")
+            .add(FragmentPage.class, "Fragment", "Reusing markup fragments")
+            .add(PanelPage.class, "Panel", "Creating reusable composite components with panels")
             );
         return categories;
     }

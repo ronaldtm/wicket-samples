@@ -1,0 +1,25 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:extend>
+  <form wicket:id="form">
+
+    <table border="0">
+      <tr wicket:id="name"></tr>
+      <tr wicket:id="email"></tr>
+      <tr wicket:id="birthDate"></tr>
+      <tr>
+        <td colspan="2"><button wicket:id="send">Send</button></td>
+      </tr>
+    </table>
+    
+  </form>
+
+  <wicket:fragment wicket:id="fieldFragment">
+    <td><label wicket:id="label"></label></td>
+    <td><input wicket:id="field"></td>
+    <td><ul wicket:id="feedback"></ul></td>
+  </wicket:fragment>
+
+</wicket:extend>
+</body>
+</html>

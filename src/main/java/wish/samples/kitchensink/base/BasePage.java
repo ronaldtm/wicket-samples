@@ -74,7 +74,9 @@ public abstract class BasePage extends WebPage {
             public boolean isVisible() {
                 return super.isVisible() && StringUtils.trimToNull(getDefaultModelObjectAsString()) != null;
             }
-        }.add(JQuery.ready("$('#content').accordion()")));
+        }
+        //.add(JQuery.ready("$('#content').accordion()"))
+        );
 
         add(new ListView<PageCategory>("categories", App.get().getPageCategories()) {
             private static final long serialVersionUID = -7402552099056811629L;
