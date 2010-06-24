@@ -3,13 +3,15 @@
   <wicket:extend>
     <form wicket:id="form">
       
-      <div>
-        <label>File:</label>
-        <input type="file" wicket:id="file">
-      </div>
-      <div>
-        <button wicket:id="send">Send</button>
-      </div>
+      <table border="0">
+        <tr>
+          <td><label>File:</label></td>
+          <td><input type="file" wicket:id="file"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><button wicket:id="send">Send</button></td>
+        </tr>
+      </table>
       
     </form>
 

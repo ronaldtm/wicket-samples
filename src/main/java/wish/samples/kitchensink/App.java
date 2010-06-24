@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.wicket.Application;
 import org.apache.wicket.IClusterable;
 import org.apache.wicket.Page;
 import org.apache.wicket.Request;
@@ -13,6 +14,7 @@ import org.apache.wicket.Session;
 import org.apache.wicket.devutils.inspector.InspectorPage;
 import org.apache.wicket.devutils.inspector.LiveSessionsPage;
 import org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadWebRequest;
+import org.apache.wicket.markup.MarkupCache;
 import org.apache.wicket.protocol.http.HttpSessionStore;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.http.WebRequest;
@@ -54,6 +56,12 @@ public class App extends WebApplication {
 
         getSessionSettings().setMaxPageMaps(1);
         getSessionSettings().setPageMapEvictionStrategy(new LeastRecentlyAccessedEvictionStrategy(3));
+
+        if ("development".equals(System.getProperty("wicket.configuration"))) {
+            getMarkupSettings().setMarkupCache(new NullMarkupCache(this));
+        } else {
+
+        }
 
         mount(new QueryStringUrlCodingStrategy("debug/inspector", InspectorPage.class));
         mount(new QueryStringUrlCodingStrategy("debug/sessions", LiveSessionsPage.class));
@@ -131,6 +139,20 @@ public class App extends WebApplication {
             String pagePath = pageClass.getSimpleName().replaceFirst("Page$", "");
             pagePath = Character.toLowerCase(pagePath.charAt(0)) + pagePath.substring(1);
             return String.format("%s/%s", category.path, pagePath);
+        }
+    }
+
+    private static class NullMarkupCache extends MarkupCache {
+        public NullMarkupCache(Application application) {
+            super(application);
+        }
+        @Override
+        protected <K, V> ICache<K, V> newCacheImplementation() {
+            return new DefaultCacheImplementation<K, V>() {
+                @Override
+                public void put(K key, V value) {
+                }
+            };
         }
     }
 }

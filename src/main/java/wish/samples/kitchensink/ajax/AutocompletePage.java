@@ -25,6 +25,7 @@ public class AutocompletePage extends BasePage {
         setPageTitle("Autocomplete");
 
         Form form = new Form("form", new CompoundPropertyModel(this));
+        add(form);
 
         AutoCompleteSettings settings = new AutoCompleteSettings();
         form.add(new AutoCompleteTextField("color", settings) {
@@ -47,7 +48,6 @@ public class AutocompletePage extends BasePage {
             }
         });
 
-        add(form);
         add(new FeedbackPanel("feedback"));
     }
 }

@@ -26,6 +26,7 @@ public class AjaxFileUploadPage extends BasePage {
         add(feedback);
 
         Form form = new Form("form", new CompoundPropertyModel(this));
+        add(form);
         form.setOutputMarkupId(true);
         form.setMultiPart(true);
         form.setMaxSize(Bytes.kilobytes(1000));
@@ -50,7 +51,5 @@ public class AjaxFileUploadPage extends BasePage {
                 target.addComponent(feedback);
             }
         });
-
-        add(form);
     }
 }
