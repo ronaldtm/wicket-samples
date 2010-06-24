@@ -12,11 +12,11 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
 
-public class PanelPagePanel extends Panel {
+public class ContactPanel extends Panel {
     private static final long serialVersionUID = -8501926258693714203L;
 
     @SuppressWarnings("unchecked")
-    public PanelPagePanel(String id, final IModel<Contact> model) {
+    public ContactPanel(String id, final IModel<Contact> model) {
         super(id, model);
         setOutputMarkupId(true);
 
@@ -33,11 +33,11 @@ public class PanelPagePanel extends Panel {
             protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
                 info(form.getModelObject().toString());
                 model.setObject(new Contact());
-                target.addComponent(PanelPagePanel.this);
+                target.addComponent(ContactPanel.this);
             }
             @Override
             protected void onError(AjaxRequestTarget target, Form<?> form) {
-                target.addComponent(PanelPagePanel.this);
+                target.addComponent(ContactPanel.this);
             }
         });
 

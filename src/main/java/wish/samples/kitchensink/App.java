@@ -27,6 +27,7 @@ import wish.samples.kitchensink.ajax.AutocompletePage;
 import wish.samples.kitchensink.form.AjaxFormPage;
 import wish.samples.kitchensink.form.SimpleFormPage;
 import wish.samples.kitchensink.home.HomePage;
+import wish.samples.kitchensink.layout.BorderPage;
 import wish.samples.kitchensink.layout.FragmentPage;
 import wish.samples.kitchensink.layout.PanelPage;
 
@@ -111,6 +112,7 @@ public class App extends WebApplication {
         categories.add(new PageCategory("layout", "Layout")
             .add(FragmentPage.class, "Fragment", "Reusing markup fragments")
             .add(PanelPage.class, "Panel", "Creating reusable composite components with panels")
+            .add(BorderPage.class, "Border", "Wrapping components with reusable borders")
             );
         return categories;
     }

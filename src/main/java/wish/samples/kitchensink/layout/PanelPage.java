@@ -14,8 +14,8 @@ public class PanelPage extends BasePage {
     public PanelPage() {
         setPageTitle("Panel Page");
 
-        add(new PanelPagePanel("contact1", new PropertyModel(this, "contact1")));
-        add(new PanelPagePanel("contact2", new PropertyModel(this, "contact2")));
-        add(new PanelPagePanel("contact3", new PropertyModel(this, "contact3")));
+        add(new ContactPanel("contact1", new PropertyModel(this, "contact1")));
+        add(new ContactPanel("contact2", new PropertyModel(this, "contact2")));
+        add(new ContactPanel("contact3", new PropertyModel(this, "contact3")));
     }
 }
