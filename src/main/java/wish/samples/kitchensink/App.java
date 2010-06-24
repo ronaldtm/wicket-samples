@@ -163,4 +163,17 @@ public class App extends WebApplication {
             };
         }
     }
+
+    public List<String> loadExtraContentList() {
+        List<String> extraContentList = Lists.newArrayList();
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            String value = System.getProperty("extraContent." + i);
+            if (value != null) {
+                extraContentList.add(value);
+            } else {
+                break;
+            }
+        }
+        return extraContentList;
+    }
 }

@@ -66,7 +66,7 @@
     </div>
 
     <div id="content" class="ui-accordion ui-widget ui-helper-reset">
-      <h3 class="ui-accordion-header ui-helper-reset ui-state-active ui-corner-top" aria-expanded="true">
+      <h3 class="ui-accordion-header ui-helper-reset ui-state-active ui-corner-top">
         <a href="#" wicket:id="pageTitle"></a>
       </h3>
       <div>
@@ -76,15 +76,9 @@
 
   </div>
 
-  <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-  </script>
-  <script type="text/javascript">
-    try{ 
-      var pageTracker = _gat._getTracker("UA-17118614-1");
-      pageTracker._trackPageview();
-    } catch(err) {} 
-  </script>
+  <wicket:container wicket:id="extraContent">
+    <wicket:container wicket:id="include"></wicket:container>
+  </wicket:container>
+
 </body>
 </html>

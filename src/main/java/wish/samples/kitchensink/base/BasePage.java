@@ -8,6 +8,7 @@ import org.apache.wicket.devutils.inspector.InspectorPage;
 import org.apache.wicket.devutils.inspector.LiveSessionsPage;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.include.Include;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.link.PopupSettings;
@@ -74,9 +75,7 @@ public abstract class BasePage extends WebPage {
             public boolean isVisible() {
                 return super.isVisible() && StringUtils.trimToNull(getDefaultModelObjectAsString()) != null;
             }
-        }
-        //.add(JQuery.ready("$('#content').accordion()"))
-        );
+        });
 
         add(new ListView<PageCategory>("categories", App.get().getPageCategories()) {
             private static final long serialVersionUID = -7402552099056811629L;
@@ -99,8 +98,16 @@ public abstract class BasePage extends WebPage {
             }
         });
         add(JQuery.ready("$('#menu').accordion({ autoHeight:false, event:'mouseover' })"));
-    }
 
+        add(new ListView<String>("extraContent", App.get().loadExtraContentList()) {
+            private static final long serialVersionUID = -2176903311152916486L;
+            @Override
+            protected void populateItem(ListItem<String> item) {
+                item.add(new Include("include", item.getModelObject()));
+            }
+        });
+
+    }
     private Link<?> createSourceLink(String id) {
         PageParameters params = new PageParameters();
         params.add("page", getClass().getName());
