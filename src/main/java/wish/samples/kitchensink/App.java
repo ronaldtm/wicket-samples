@@ -18,6 +18,7 @@ import org.apache.wicket.markup.MarkupCache;
 import org.apache.wicket.protocol.http.HttpSessionStore;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.http.WebRequest;
+import org.apache.wicket.request.target.coding.MixedParamHybridUrlCodingStrategy;
 import org.apache.wicket.request.target.coding.QueryStringUrlCodingStrategy;
 import org.apache.wicket.session.ISessionStore;
 import org.apache.wicket.session.pagemap.LeastRecentlyAccessedEvictionStrategy;
@@ -92,9 +93,10 @@ public class App extends WebApplication {
     }
 
     private void mountPages() {
+        final String[] EMPTY_STRING_ARRAY = new String[0];
         for (PageCategory category : getPageCategories()) {
             for (PageItem link : category.links) {
-                mount(new QueryStringUrlCodingStrategy(link.getMountPath(category), link.pageClass));
+                mount(new MixedParamHybridUrlCodingStrategy(link.getMountPath(category), link.pageClass, EMPTY_STRING_ARRAY));
             }
         }
     }

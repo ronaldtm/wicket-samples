@@ -7,6 +7,10 @@
       font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       font-size: 70%;
     }
+    #body {
+      margin: 0em auto;
+      width: 1024px;
+    }
     #header {
       font-size: 14px;
       padding: .5em;
@@ -20,13 +24,18 @@
     }
     #menu {
       float: left;
-      width: 15em;
+      width: 200px;
     }
     #menu div {
       padding: 1em 1em;
     }
     #content {
-      margin-left: 16em;
+      margin-left: 12px;
+      float: left;
+      width: 810px;
+    }
+    #demoContent {
+      margin: 6px;
     }
     table {
       font-size: 100%;
@@ -69,9 +78,20 @@
       <h3 class="ui-accordion-header ui-helper-reset ui-state-active ui-corner-top">
         <a href="#" wicket:id="pageTitle"></a>
       </h3>
-      <div>
-        <wicket:child/>
+
+      <div id="sections">
+        <ul>
+          <li><a href="#demoContent">Demo</a></li>
+          <li><a href="#source">Source</a></li>
+        </ul>
+        <div id="demoContent">
+          <wicket:child/>
+        </div>
+        <div id="source">
+          test
+        </div>
       </div>
+
     </div>
 
   </div>

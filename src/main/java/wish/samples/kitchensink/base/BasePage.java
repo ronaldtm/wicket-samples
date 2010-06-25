@@ -26,7 +26,7 @@ import wish.samples.kitchensink.source.SourcePage;
 
 public abstract class BasePage extends WebPage {
 
-    private String pageTitle = "";
+    private String pageTitle = "Demo";
 
     public BasePage() {
         super();
@@ -71,10 +71,10 @@ public abstract class BasePage extends WebPage {
 
         add(new Label("pageTitle", new PropertyModel<String>(this, "pageTitle")) {
             private static final long serialVersionUID = 2648512779130255302L;
-            @Override
-            public boolean isVisible() {
-                return super.isVisible() && StringUtils.trimToNull(getDefaultModelObjectAsString()) != null;
-            }
+//            @Override
+//            public boolean isVisible() {
+//                return super.isVisible() && StringUtils.trimToNull(getDefaultModelObjectAsString()) != null;
+//            }
         });
 
         add(new ListView<PageCategory>("categories", App.get().getPageCategories()) {
@@ -98,6 +98,7 @@ public abstract class BasePage extends WebPage {
             }
         });
         add(JQuery.ready("$('#menu').accordion({ autoHeight:false, event:'mouseover' })"));
+        add(JQuery.ready("$('#sections').tabs()"));
 
         add(new ListView<String>("extraContent", App.get().loadExtraContentList()) {
             private static final long serialVersionUID = -2176903311152916486L;

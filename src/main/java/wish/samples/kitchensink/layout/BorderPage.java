@@ -17,7 +17,7 @@ public class BorderPage extends BasePage {
 
     @SuppressWarnings("unchecked")
     public BorderPage() {
-        setPageTitle("Panel Page");
+        setPageTitle("Border");
 
         Form form = new Form("form", new CompoundPropertyModel(new PropertyModel(this, "contact")));
         add(form);
