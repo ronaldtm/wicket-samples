@@ -26,7 +26,10 @@ import org.apache.wicket.session.pagemap.LeastRecentlyAccessedEvictionStrategy;
 import wicketsamples.ajax.AjaxFileUploadPage;
 import wicketsamples.ajax.AutocompletePage;
 import wicketsamples.form.AjaxFormPage;
+import wicketsamples.form.CustomConvertionPage;
+import wicketsamples.form.CustomValidationPage;
 import wicketsamples.form.SimpleFormPage;
+import wicketsamples.form.BuiltInValidationPage;
 import wicketsamples.home.HomePage;
 import wicketsamples.layout.BorderPage;
 import wicketsamples.layout.FragmentPage;
@@ -96,7 +99,8 @@ public class App extends WebApplication {
         final String[] EMPTY_STRING_ARRAY = new String[0];
         for (PageCategory category : getPageCategories()) {
             for (PageItem link : category.links) {
-                mount(new MixedParamHybridUrlCodingStrategy(link.getMountPath(category), link.pageClass, EMPTY_STRING_ARRAY));
+                mount(new MixedParamHybridUrlCodingStrategy(link.getMountPath(category), link.pageClass,
+                    EMPTY_STRING_ARRAY));
             }
         }
     }
@@ -105,9 +109,12 @@ public class App extends WebApplication {
         List<PageCategory> categories = Lists.newArrayList();
         categories.add(new PageCategory("forms", "Forms")
             .add(SimpleFormPage.class, "Simple form", "Simple form")
-            .add(AjaxFormPage.class, "Ajax form", "Simple form with ajax submit")
+            .add(BuiltInValidationPage.class, "Built-in validation", "Built-in validation")
+            .add(CustomValidationPage.class, "Custom validation", "Custom validation")
+            .add(CustomConvertionPage.class, "Custom convertion", "Custom convertion")
             );
         categories.add(new PageCategory("ajax", "Ajax")
+            .add(AjaxFormPage.class, "Ajax form", "Simple form with ajax submit")
             .add(AutocompletePage.class, "Auto-Complete", "Show matching options while you type")
             .add(AjaxFileUploadPage.class, "File Upload", "Upload a file in an 'ajax-like' request")
             );

@@ -39,3 +39,13 @@ body {
 table {
   font-size: 100%;
 }
+
+.feedbackPanelERROR {
+    color: #f00;
+    font-weight: bold;
+}
+
+.feedbackPanelINFO {
+    color: #000;
+    font-weight: bold;
+}

@@ -7,7 +7,6 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
-import org.apache.wicket.validation.validator.EmailAddressValidator;
 
 import wicketsamples.base.BasePage;
 
@@ -26,8 +25,8 @@ public class SimpleFormPage extends BasePage {
         Form form = new Form("form", new CompoundPropertyModel(new PropertyModel(this, "contact")));
         add(form);
 
-        form.add(new TextField("name").setRequired(true));
-        form.add(new TextField("email").setRequired(true).add(EmailAddressValidator.getInstance()));
+        form.add(new TextField("name"));
+        form.add(new TextField("email"));
         form.add(new DateTextField("birthDate", "dd-MM-yyyy"));
 
         form.add(new Button("send") {
