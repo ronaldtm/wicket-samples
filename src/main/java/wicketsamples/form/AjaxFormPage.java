@@ -40,6 +40,11 @@ public class AjaxFormPage extends BasePage {
                 target.addComponent(form);
                 target.addComponent(feedback);
             }
+            @Override
+            protected void onError(AjaxRequestTarget target, Form<?> form) {
+                target.addComponent(form);
+                target.addComponent(feedback);
+            }
         });
     }
 }
