@@ -18,6 +18,7 @@ public class SimpleFormPage extends BasePage {
 
     public SimpleFormPage() {
         super("Simple Form");
+        appendTabForSourceCodeForJava(Contact.class);
 
         FeedbackPanel feedback = new FeedbackPanel("feedback");
         add(feedback);

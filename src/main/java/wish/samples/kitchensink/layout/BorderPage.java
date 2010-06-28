@@ -10,6 +10,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
 
 import wish.samples.kitchensink.base.BasePage;
+import wish.samples.kitchensink.form.Contact;
 
 public class BorderPage extends BasePage {
 
@@ -18,6 +19,7 @@ public class BorderPage extends BasePage {
     @SuppressWarnings("unchecked")
     public BorderPage() {
         super("Border");
+        appendTabForSourceCodeForJavaAndHTML(FieldBorder.class);
 
         Form form = new Form("form", new CompoundPropertyModel(new PropertyModel(this, "contact")));
         add(form);

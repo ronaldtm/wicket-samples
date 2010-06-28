@@ -9,6 +9,7 @@ import org.apache.wicket.PageParameters;
 import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.devutils.inspector.InspectorPage;
 import org.apache.wicket.devutils.inspector.LiveSessionsPage;
+import org.apache.wicket.markup.html.CSSPackageResource;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.include.Include;
@@ -69,8 +70,6 @@ public abstract class BasePage extends WebPage {
         setPageTitle(pageTitle);
         setDefaultModel(new CompoundPropertyModel(this));
 
-        JQuery.addHeaderContributionsTo(this);
-
         add(new BookmarkablePageLink<Void>("homeLink", getApplication().getHomePage()));
 
         add(new BookmarkablePageLink<Void>("inspector", InspectorPage.class)
@@ -84,7 +83,6 @@ public abstract class BasePage extends WebPage {
 
         add(sourceCodeTabTitles);
         add(sourceCodeTabContents);
-        add(JQuery.ready("$('#sections').tabs();"));
 
         add(new ListView<String>("extraContent", App.get().loadExtraContentList()) {
             private static final long serialVersionUID = -2176903311152916486L;
@@ -95,9 +93,14 @@ public abstract class BasePage extends WebPage {
         });
 
         appendTabForSourceCodeForJavaAndHTML(getClass());
+
+        JQuery.addHeaderContributionsTo(this);
+        Highlighter.addHeaderContributions(this);
+        add(CSSPackageResource.getHeaderContribution(BasePage.class, "BasePage.css"));
+        add(JQuery.ready("$('#sections').tabs();"));
     }
 
-    protected final void appendTabForSourceCodeForJava(Class<? extends Component> componentClass) {
+    protected final void appendTabForSourceCodeForJava(Class<?> componentClass) {
         String classSimpleName = componentClass.getSimpleName();
         appendTabForSourceCode(componentClass.getResource(classSimpleName + ".java"));
     }

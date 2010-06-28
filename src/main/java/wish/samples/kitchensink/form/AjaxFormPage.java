@@ -19,6 +19,7 @@ public class AjaxFormPage extends BasePage {
 
     public AjaxFormPage() {
         super("Ajax Form");
+        appendTabForSourceCodeForJava(Contact.class);
 
         final FeedbackPanel feedback = new FeedbackPanel("feedback");
         add(feedback.setOutputMarkupId(true));
