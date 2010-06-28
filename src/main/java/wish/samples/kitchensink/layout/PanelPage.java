@@ -12,7 +12,7 @@ public class PanelPage extends BasePage {
 
     @SuppressWarnings("unchecked")
     public PanelPage() {
-        setPageTitle("Panel");
+        super("Panel");
 
         add(new ContactPanel("contact1", new PropertyModel(this, "contact1")));
         add(new ContactPanel("contact2", new PropertyModel(this, "contact2")));

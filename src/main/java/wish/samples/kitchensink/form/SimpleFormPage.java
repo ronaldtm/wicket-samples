@@ -17,8 +17,7 @@ public class SimpleFormPage extends BasePage {
     Contact contact = new Contact();
 
     public SimpleFormPage() {
-
-        setPageTitle("Simple Form");
+        super("Simple Form");
 
         FeedbackPanel feedback = new FeedbackPanel("feedback");
         add(feedback);

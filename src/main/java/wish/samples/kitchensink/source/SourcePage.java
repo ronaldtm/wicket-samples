@@ -12,6 +12,7 @@ import org.apache.wicket.protocol.http.servlet.AbortWithWebErrorCodeException;
 import org.apache.wicket.util.io.IOUtils;
 
 import wish.samples.kitchensink.base.component.TabPanel;
+import wish.samples.kitchensink.base.highlighter.Highlighter;
 
 @SuppressWarnings("unchecked")
 public class SourcePage extends WebPage {
@@ -28,9 +29,9 @@ public class SourcePage extends WebPage {
 
         TabPanel tabs = new TabPanel("tabs");
         tabs.append(pageClassSimpleName + ".java",
-            new SourceCodePanel("source", new PropertyModel(this, "pageString"), "java"));
+            new SourceCodePanel("source", new PropertyModel(this, "pageString"), Highlighter.Syntax.Java));
         tabs.append(pageClassSimpleName + ".html",
-            new SourceCodePanel("source", new PropertyModel(this, "markupString"), "html"));
+            new SourceCodePanel("source", new PropertyModel(this, "markupString"), Highlighter.Syntax.HTML));
         add(tabs);
     }
 

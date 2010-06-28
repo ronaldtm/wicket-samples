@@ -22,7 +22,7 @@
       text-align: right;
       1float: right;
     }
-    #menu {
+    .leftMenu {
       float: left;
       width: 200px;
     }
@@ -47,29 +47,11 @@
       <h3><a wicket:id="homeLink">Wicket Samples - Kitchen Sink</a></h3>
     </div>
     <div id="metaControls">
-      [<a wicket:id="source">source code</a>]
       [<a wicket:id="inspector">inspector</a>]
       [<a wicket:id="sessions">sessions</a>]
     </div>
 
-    <div id="menu">
-      <wicket:container wicket:id="categories">
-        <h3><a href="#" wicket:id="title"></a></h3>
-        <div>
-          <table>
-            <tbody>
-              <tr wicket:id="links">
-                <td>
-                  <a wicket:id="link">
-                    <span wicket:id="title"></span>
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </wicket:container>
-    </div>
+    <div wicket:id="menu" class="leftMenu"></div>
 
     <div id="content" class="ui-accordion ui-widget ui-helper-reset">
       <h3 class="ui-accordion-header ui-helper-reset ui-state-active ui-corner-top">
@@ -79,14 +61,12 @@
       <div id="sections">
         <ul>
           <li><a href="#demoContent">Demo</a></li>
-          <li><a href="#source">Source</a></li>
+          <li wicket:id="sourceCodeTabTitles"></li>
         </ul>
         <div id="demoContent">
           <wicket:child/>
         </div>
-        <div id="source">
-          test
-        </div>
+        <div wicket:id="sourceCodeTabContents"></div>
       </div>
 
     </div>
@@ -96,6 +76,10 @@
   <wicket:container wicket:id="extraContent">
     <wicket:container wicket:id="include"></wicket:container>
   </wicket:container>
+
+  <wicket:fragment wicket:id="linkFragment">
+    <a wicket:id="link"></a>
+  </wicket:fragment>
 
 </body>
 </html>

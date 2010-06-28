@@ -24,7 +24,7 @@ public class FragmentPage extends BasePage {
 
     @SuppressWarnings("unchecked")
     public FragmentPage() {
-        setPageTitle("Fragment");
+        super("Fragment");
 
         Form form = new Form("form");
         add(form);

@@ -21,8 +21,7 @@ public class AutocompletePage extends BasePage {
     String color;
 
     public AutocompletePage() {
-
-        setPageTitle("Autocomplete");
+        super("Autocomplete");
 
         Form form = new Form("form", new CompoundPropertyModel(this));
         add(form);

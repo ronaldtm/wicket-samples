@@ -18,8 +18,7 @@ public class AjaxFormPage extends BasePage {
     Contact contact = new Contact();
 
     public AjaxFormPage() {
-        
-        setPageTitle("Ajax Form");
+        super("Ajax Form");
 
         final FeedbackPanel feedback = new FeedbackPanel("feedback");
         add(feedback.setOutputMarkupId(true));

@@ -18,8 +18,7 @@ public class AjaxFileUploadPage extends BasePage {
     FileUpload file;
 
     public AjaxFileUploadPage() {
-
-        setPageTitle("Ajax File Upload");
+        super("Ajax File Upload");
 
         final FeedbackPanel feedback = new FeedbackPanel("feedback");
         feedback.setOutputMarkupId(true);
