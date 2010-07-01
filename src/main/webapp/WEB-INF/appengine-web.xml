@@ -8,7 +8,6 @@
 
   <system-properties>
     <property name="java.util.logging.config.file" value="WEB-INF/classes/logging.properties" />
-    <property name="extraContent.0" value="https://dl.dropbox.com/u/1585725/google-analytics.html" />
   </system-properties>
 
 </appengine-web-app>

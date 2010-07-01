@@ -7,23 +7,20 @@ import org.apache.wicket.Component;
 import org.apache.wicket.IPageMap;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.behavior.SimpleAttributeModifier;
+import org.apache.wicket.behavior.StringHeaderContributor;
 import org.apache.wicket.devutils.inspector.InspectorPage;
 import org.apache.wicket.devutils.inspector.LiveSessionsPage;
 import org.apache.wicket.markup.html.CSSPackageResource;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.include.Include;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.PopupSettings;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
-import wicketsamples.App;
 import wicketsamples.base.highlighter.Highlighter;
 import wicketsamples.base.jquery.JQuery;
 import wicketsamples.source.SourceCodePanel;
@@ -84,13 +81,11 @@ public abstract class BasePage extends WebPage {
         add(sourceCodeTabTitles);
         add(sourceCodeTabContents);
 
-        add(new ListView<String>("extraContent", App.get().loadExtraContentList()) {
-            private static final long serialVersionUID = -2176903311152916486L;
-            @Override
-            protected void populateItem(ListItem<String> item) {
-                item.add(new Include("include", item.getModelObject()));
-            }
-        });
+        add(new StringHeaderContributor(new PropertyModel(this, "application.extraHtmlHeadContent")));
+        add(new Label("extraHeaderContent", new PropertyModel(this, "application.extraHeaderContent"))
+            .setEscapeModelStrings(false));
+        add(new Label("extraBodyContent", new PropertyModel(this, "application.extraBodyContent"))
+            .setEscapeModelStrings(false));
 
         appendTabForSourceCodeForJavaAndHTML(getClass());
 

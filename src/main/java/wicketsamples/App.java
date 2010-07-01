@@ -25,11 +25,12 @@ import org.apache.wicket.session.pagemap.LeastRecentlyAccessedEvictionStrategy;
 
 import wicketsamples.ajax.AjaxFileUploadPage;
 import wicketsamples.ajax.AutocompletePage;
+import wicketsamples.base.config.AppConfig;
 import wicketsamples.form.AjaxFormPage;
+import wicketsamples.form.BuiltInValidationPage;
 import wicketsamples.form.CustomConvertionPage;
 import wicketsamples.form.CustomValidationPage;
 import wicketsamples.form.SimpleFormPage;
-import wicketsamples.form.BuiltInValidationPage;
 import wicketsamples.home.HomePage;
 import wicketsamples.layout.BorderPage;
 import wicketsamples.layout.FragmentPage;
@@ -173,16 +174,18 @@ public class App extends WebApplication {
         }
     }
 
-    public List<String> loadExtraContentList() {
-        List<String> extraContentList = Lists.newArrayList();
-        for (int i = 0; i < Integer.MAX_VALUE; i++) {
-            String value = System.getProperty("extraContent." + i);
-            if (value != null) {
-                extraContentList.add(value);
-            } else {
-                break;
-            }
-        }
-        return extraContentList;
+    public String getExtraHeaderContent() {
+        return AppConfig.get()
+            .getProperty(AppConfig.KEY_EXTRA_HEADER_CONTENT, "");
+    }
+
+    public String getExtraBodyContent() {
+        return AppConfig.get()
+            .getProperty(AppConfig.KEY_EXTRA_BODY_CONTENT, "");
+    }
+
+    public String getExtraHtmlHeadContent() {
+        return AppConfig.get()
+            .getProperty(AppConfig.KEY_EXTRA_HTML_HEAD_CONTENT, "");
     }
 }

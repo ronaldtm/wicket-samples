@@ -8,13 +8,7 @@
   <div id="body">
 
     <div id="header" class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-top">
-      <div style="float:right;">
-        <script type="text/javascript">
-          var flattr_url = 'http://wicket-samples.appspot.com';
-          var flattr_btn='compact';
-        </script>
-        <script src="http://api.flattr.com/button/load.js" type="text/javascript"></script>
-      </div>
+      <div wicket:id="extraHeaderContent" style="float:right;"></div>
       <h3><a wicket:id="homeLink">Wicket Samples - Kitchen Sink</a></h3>
     </div>
     <div id="metaControls">
@@ -44,9 +38,7 @@
 
   </div>
 
-  <wicket:container wicket:id="extraContent">
-    <wicket:container wicket:id="include"></wicket:container>
-  </wicket:container>
+  <wicket:container wicket:id="extraBodyContent"></wicket:container>
 
   <wicket:fragment wicket:id="linkFragment">
     <a wicket:id="link"></a>
