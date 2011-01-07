@@ -15,6 +15,7 @@ public class SimpleFormPage extends BasePage {
 
     Contact contact = new Contact();
 
+    @SuppressWarnings("rawtypes")
     public SimpleFormPage() {
         super("Simple Form");
         appendTabForSourceCodeForJava(Contact.class);

@@ -25,7 +25,7 @@ public class JQueryReadyHeaderContributor extends TextTemplateHeaderContributor 
         this("$('#" + target.getMarkupId() + "')." + StringUtils.join(scriptLines, "\n"));
         target.setOutputMarkupId(true);
     }
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     private static IModel<Map<String, Object>> toMapModel(String key, String value) {
         HashMap<String, Object> variables = new HashMap<String, Object>();
         variables.put(key, value);

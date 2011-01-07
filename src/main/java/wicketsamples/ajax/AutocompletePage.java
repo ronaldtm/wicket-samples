@@ -20,6 +20,7 @@ public class AutocompletePage extends BasePage {
 
     String color;
 
+    @SuppressWarnings("rawtypes")
     public AutocompletePage() {
         super("Autocomplete");
 

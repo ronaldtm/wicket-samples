@@ -16,7 +16,7 @@ public class BorderPage extends BasePage {
 
     Contact contact = new Contact();
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public BorderPage() {
         super("Border");
         appendTabForSourceCodeForJavaAndHTML(FieldBorder.class);

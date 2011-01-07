@@ -22,6 +22,7 @@ public class CustomValidationPage extends BasePage {
 
     String email;
 
+    @SuppressWarnings("rawtypes")
     public CustomValidationPage() throws ParseException {
         super("Simple Form");
 

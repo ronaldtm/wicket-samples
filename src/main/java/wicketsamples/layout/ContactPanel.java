@@ -15,7 +15,7 @@ import org.apache.wicket.validation.validator.EmailAddressValidator;
 public class ContactPanel extends Panel {
     private static final long serialVersionUID = -8501926258693714203L;
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public ContactPanel(String id, final IModel<Contact> model) {
         super(id, model);
         setOutputMarkupId(true);

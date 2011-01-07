@@ -11,7 +11,7 @@ public class PanelPage extends BasePage {
     Contact contact2 = new Contact();
     Contact contact3 = new Contact();
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public PanelPage() {
         super("Panel");
         appendTabForSourceCodeForJavaAndHTML(ContactPanel.class);

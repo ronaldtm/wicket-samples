@@ -24,6 +24,7 @@ public class BuiltInValidationPage extends BasePage {
 
     Contact contact = new Contact();
 
+    @SuppressWarnings("rawtypes")
     public BuiltInValidationPage() throws ParseException {
         super("Simple Form");
         appendTabForSourceCodeForJava(Contact.class);

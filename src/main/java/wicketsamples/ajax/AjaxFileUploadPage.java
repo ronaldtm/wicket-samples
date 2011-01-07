@@ -17,6 +17,7 @@ public class AjaxFileUploadPage extends BasePage {
 
     FileUpload file;
 
+    @SuppressWarnings("rawtypes")
     public AjaxFileUploadPage() {
         super("Ajax File Upload");
 

@@ -16,13 +16,13 @@ import org.apache.wicket.validation.validator.EmailAddressValidator;
 
 import wicketsamples.base.BasePage;
 
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class FragmentPage extends BasePage {
 
     String name;
     String email;
     Date birthDate;
 
-    @SuppressWarnings("unchecked")
     public FragmentPage() {
         super("Fragment");
 
@@ -42,7 +42,6 @@ public class FragmentPage extends BasePage {
         });
     }
 
-    @SuppressWarnings("unchecked")
     class FieldFragment extends Fragment {
         private static final long serialVersionUID = -2291031031424315050L;
         public FieldFragment(String id, String label, FormComponent<?> field) {

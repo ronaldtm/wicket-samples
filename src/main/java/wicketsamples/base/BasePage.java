@@ -62,7 +62,7 @@ public abstract class BasePage extends WebPage {
         init(pageTitle);
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "rawtypes" })
     protected void init(String pageTitle) {
         setPageTitle(pageTitle);
         setDefaultModel(new CompoundPropertyModel(this));

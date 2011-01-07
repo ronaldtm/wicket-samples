@@ -5,6 +5,7 @@ import java.io.Serializable;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 
@@ -30,7 +31,7 @@ public class AppConfig {
 
     private AppConfig() {
         Query query = new Query(ENTITY_KIND_APP_CONFIG);
-        if (ds.prepare(query).countEntities() == 0) {
+        if (ds.prepare(query).countEntities(FetchOptions.Builder.withDefaults()) == 0) {
             setProperty(KEY_DUMMY, "");
         }
     }

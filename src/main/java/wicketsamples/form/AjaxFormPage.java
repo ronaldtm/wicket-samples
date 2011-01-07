@@ -17,6 +17,7 @@ public class AjaxFormPage extends BasePage {
 
     Contact contact = new Contact();
 
+    @SuppressWarnings("rawtypes")
     public AjaxFormPage() {
         super("Ajax Form");
         appendTabForSourceCodeForJava(Contact.class);

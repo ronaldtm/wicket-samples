@@ -23,7 +23,7 @@ public class CustomConvertionPage extends BasePage {
 
     Class<?> clazz;
 
-    @SuppressWarnings("serial")
+    @SuppressWarnings({ "serial", "rawtypes" })
     public CustomConvertionPage() throws ParseException {
         super("Simple Form");
 
