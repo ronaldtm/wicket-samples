@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
+import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
@@ -17,17 +18,12 @@ import org.apache.wicket.validation.validator.EmailAddressValidator;
 import org.apache.wicket.validation.validator.MinimumValidator;
 import org.apache.wicket.validation.validator.StringValidator;
 
-import wicketsamples.base.BasePage;
-
-@SuppressWarnings("unchecked")
-public class BuiltInValidationPage extends BasePage {
+@SuppressWarnings({ "serial", "rawtypes", "unchecked" })
+public class BuiltInValidationPage extends WebPage {
 
     Contact contact = new Contact();
 
-    @SuppressWarnings("rawtypes")
     public BuiltInValidationPage() throws ParseException {
-        super("Simple Form");
-        appendTabForSourceCodeForJava(Contact.class);
 
         FeedbackPanel feedback = new FeedbackPanel("feedback");
         add(feedback);

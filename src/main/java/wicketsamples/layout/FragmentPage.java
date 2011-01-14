@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.feedback.ComponentFeedbackMessageFilter;
+import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -14,17 +15,14 @@ import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
 
-import wicketsamples.base.BasePage;
-
-@SuppressWarnings({ "unchecked", "rawtypes" })
-public class FragmentPage extends BasePage {
+@SuppressWarnings({ "serial", "rawtypes", "unchecked" })
+public class FragmentPage extends WebPage {
 
     String name;
     String email;
     Date birthDate;
 
     public FragmentPage() {
-        super("Fragment");
 
         Form form = new Form("form");
         add(form);

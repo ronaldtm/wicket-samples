@@ -3,23 +3,21 @@ package wicketsamples.layout;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
+import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
 
-import wicketsamples.base.BasePage;
 import wicketsamples.form.Contact;
 
-public class BorderPage extends BasePage {
+@SuppressWarnings({ "serial", "rawtypes", "unchecked" })
+public class BorderPage extends WebPage {
 
     Contact contact = new Contact();
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
     public BorderPage() {
-        super("Border");
-        appendTabForSourceCodeForJavaAndHTML(FieldBorder.class);
 
         Form form = new Form("form", new CompoundPropertyModel(new PropertyModel(this, "contact")));
         add(form);

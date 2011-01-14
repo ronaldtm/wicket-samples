@@ -2,30 +2,25 @@ package wicketsamples.form;
 
 import java.lang.reflect.Method;
 import java.text.ParseException;
-import java.util.Locale;
 import java.util.Set;
 
+import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.util.convert.ConversionException;
 import org.apache.wicket.util.convert.IConverter;
-
-import wicketsamples.base.BasePage;
 
 import com.google.common.collect.Sets;
 
-@SuppressWarnings("unchecked")
-public class CustomConvertionPage extends BasePage {
+@SuppressWarnings({ "serial", "rawtypes", "unchecked" })
+public class CustomConvertionPage extends WebPage {
 
     Class<?> clazz;
 
-    @SuppressWarnings({ "serial", "rawtypes" })
     public CustomConvertionPage() throws ParseException {
-        super("Simple Form");
 
         FeedbackPanel feedback = new FeedbackPanel("feedback");
         add(feedback);
@@ -53,21 +48,5 @@ public class CustomConvertionPage extends BasePage {
                 info("Class methods: " + methodNames);
             }
         });
-    }
-
-    @SuppressWarnings("serial")
-    private static class ClassConverter implements IConverter {
-        @Override
-        public Object convertToObject(String value, Locale locale) {
-            try {
-                return Class.forName(value);
-            } catch (ClassNotFoundException ex) {
-                throw new ConversionException(ex.getMessage(), ex);
-            }
-        }
-        @Override
-        public String convertToString(Object value, Locale locale) {
-            return ((Class<?>) value).getName();
-        }
     }
 }

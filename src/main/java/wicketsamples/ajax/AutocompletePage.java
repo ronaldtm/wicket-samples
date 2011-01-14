@@ -4,25 +4,22 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.DefaultCssAutocompleteTextField;
+import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.PropertyModel;
 
-import wicketsamples.base.BasePage;
-
 import com.google.common.collect.Lists;
 
-@SuppressWarnings("unchecked")
-public class AutocompletePage extends BasePage {
+@SuppressWarnings({ "serial", "rawtypes", "unchecked" })
+public class AutocompletePage extends WebPage {
     List<String> colorOptions = Lists.newArrayList(
         "black", "blue", "cyan", "gray", "green", "magenta", "orange", "pink", "red", "white", "yellow");
 
     String color;
 
-    @SuppressWarnings("rawtypes")
     public AutocompletePage() {
-        super("Autocomplete");
 
         Form form = new Form("form");
         add(form);

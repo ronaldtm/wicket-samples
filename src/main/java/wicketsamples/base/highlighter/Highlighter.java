@@ -1,8 +1,8 @@
 package wicketsamples.base.highlighter;
 
+import java.util.List;
 import java.util.Set;
 
-import org.apache.wicket.Component;
 import org.apache.wicket.RequestCycle;
 import org.apache.wicket.ResourceReference;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -24,8 +24,8 @@ public class Highlighter {
 
     public enum Syntax {
         ActionScript3,
-        Shell,
-        ColdFusion,
+        Shell("sh"),
+        ColdFusion("cfm", "cfml"),
         Csharp,
         Cpp,
         CSS,
@@ -36,11 +36,11 @@ public class Highlighter {
         JavaScript,
         Java,
         JavaFX,
-        Perl,
+        Perl("pl"),
         PHP,
         Text,
         PowerShell,
-        Python,
+        Python("py"),
         Ruby,
         Scala,
         SQL,
@@ -52,6 +52,11 @@ public class Highlighter {
         public final ImmutableSet<String> extensions;
 
         private Syntax(String alias, String... extensions) {
+            if (alias == null)
+                alias = name().toLowerCase();
+            if (extensions == null)
+                extensions = new String[] { alias };
+
             Set<String> extensionSet = Sets.newLinkedHashSet();
             for (String extension : extensions)
                 extensionSet.add(extension.toLowerCase());
@@ -64,8 +69,7 @@ public class Highlighter {
         }
 
         private Syntax() {
-            this.alias = name().toLowerCase();
-            this.extensions = ImmutableSet.of(alias);
+            this(null, (String[]) null);
         }
 
         public boolean match(String filename) {
@@ -94,13 +98,13 @@ public class Highlighter {
             ResourceReference clipboardRef = new ResourceReference(Highlighter.class, "scripts/clipboard.swf");
             String script = String.format(
                 "SyntaxHighlighter.config.clipboardSwf = '%s';\n" +
-                "SyntaxHighlighter.all();", RequestCycle.get().urlFor(clipboardRef));
+                    "SyntaxHighlighter.all();", RequestCycle.get().urlFor(clipboardRef));
             response.renderJavascript(script, null);
         }
 
     };
 
-    public static void addHeaderContributions(Component comp) {
+    public static IBehavior[] getHeaderContributions() {
         String[] scripts = new String[] {
             "scripts/shCore.js",
             "scripts/shBrushBash.js",
@@ -124,12 +128,16 @@ public class Highlighter {
             "styles/shCore.css",
             "styles/shThemeDefault.css" };
 
+        List<IBehavior> headerContributors = Lists.newArrayList();
+
         for (String script : scripts)
-            comp.add(JavascriptPackageResource.getHeaderContribution(Highlighter.class, script));
+            headerContributors.add(JavascriptPackageResource.getHeaderContribution(Highlighter.class, script));
         for (String style : styles)
-            comp.add(CSSPackageResource.getHeaderContribution(Highlighter.class, style));
-        comp.add(new HeaderContributor(SYNTAX_HIGHLIGHTER_CLIPBOARD_CONTRIBUTION));
-        comp.add(JQuery.ready("SyntaxHighlighter.all();"));
+            headerContributors.add(CSSPackageResource.getHeaderContribution(Highlighter.class, style));
+        headerContributors.add(new HeaderContributor(SYNTAX_HIGHLIGHTER_CLIPBOARD_CONTRIBUTION));
+        headerContributors.add(JQuery.ready("SyntaxHighlighter.all();"));
+
+        return headerContributors.toArray(new IBehavior[headerContributors.size()]);
     }
 
 }

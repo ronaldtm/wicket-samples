@@ -1,0 +1,151 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wicket Samples - Kitchen Sink</title>
+  <style type="text/css">
+
+body {
+  font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 10px;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+#body {
+  position: relative;
+  margin: 0 auto;
+  width: 1024px;
+  height: 100%;
+}
+#header {
+  position: relative;
+  top: 0;
+  height: 15px;
+  padding: 5px 0 5px 10px;
+}
+#header h3 {
+  display: inline;
+  margin: 0;
+}
+
+#metaControls {
+  position: relative;
+  text-align: right; 1
+  float: right;
+}
+
+.leftMenu {
+  float: left;
+  width: 200px;
+}
+
+#menu div {
+  padding: 1em 1em;
+}
+
+#content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: 41px 0 0 213px;
+  float: left;
+  width: 810px;
+}
+#content h3 {
+  height: 15px;
+  padding: 5px 0 5px 10px;
+}
+#sections {
+  position: absolute;
+  top: 30px;
+  bottom: 0;
+  width: 804px;
+}
+#demo, #source {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5px;
+}
+#demo iframe, #source iframe {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+}
+
+table {
+  font-size: 100%;
+}
+
+.feedbackPanelERROR {
+  color: #f00;
+  font-weight: bold;
+}
+
+.feedbackPanelINFO {
+  color: #000;
+  font-weight: bold;
+}
+  
+  </style>
+  
+  <script type="text/javascript">
+  
+  function openPage(demoPath, sourcePath) {
+	  $('#demoFrame').attr('src', demoPath);
+	  $('#sourceFrame').attr('src', sourcePath);
+  }
+  
+  </script>
+  
+</head>
+<body>
+
+  <div id="body">
+
+    <div id="header" class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-top">
+      <div wicket:id="extraHeaderContent" style="float:right;"></div>
+      <h3><a wicket:id="homeLink">Wicket Samples - Kitchen Sink</a></h3>
+    </div>
+    <div id="metaControls">
+      [<a wicket:id="inspector">inspector</a>]
+      [<a wicket:id="sessions">sessions</a>]
+      [<a wicket:id="deleteSessions">delete sessions</a>]
+    </div>
+
+    <div wicket:id="menu" class="leftMenu"></div>
+
+    <div id="content" class="ui-accordion ui-widget ui-helper-reset">
+      <h3 class="ui-accordion-header ui-helper-reset ui-state-active ui-corner-top">
+        <a href="#" wicket:id="pageTitle"></a>
+      </h3>
+
+      <div id="sections">
+        <ul>
+          <li><a href="#demo">Demo</a></li>
+          <li><a href="#source">Source</a></li>
+        </ul>
+        <div id="demo">
+          <iframe id="demoFrame"></iframe>
+        </div>
+        <div id="source">
+          <iframe id="sourceFrame"></iframe>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <wicket:container wicket:id="extraBodyContent"></wicket:container>
+
+  <wicket:fragment wicket:id="linkFragment">
+    <a wicket:id="link"></a>
+  </wicket:fragment>
+
+</body>
+</html>

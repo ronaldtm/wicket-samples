@@ -17,7 +17,7 @@ public class SourceCodePanel extends Panel {
         sourceCode.add(syntax.getBehavior());
         add(sourceCode);
 
-        Highlighter.addHeaderContributions(this);
+        this.add(Highlighter.getHeaderContributions());
     }
 
 }

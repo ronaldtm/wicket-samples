@@ -1,9 +1,6 @@
 package wicketsamples.home;
 
-import wicketsamples.base.BasePage;
+import org.apache.wicket.markup.html.WebPage;
 
-public class HomePage extends BasePage {
-    public HomePage() {
-        super("Home");
-    }
+public class HomePage extends WebPage {
 }
