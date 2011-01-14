@@ -7,7 +7,6 @@ import org.apache.wicket.PageMap;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -46,7 +45,7 @@ final class MenuPanel extends Panel {
                             new PageParameters("pageClass=" + pageItem.pageClass.getName())).toString();
 
                         String script = String.format("openPage('%s','%s'); return false;", pagePath, sourcePath);
-                        listItem.add(new ExternalLink("link", Model.of("#"), Model.of(pageItem.title))
+                        listItem.add(new Label("link", Model.of(pageItem.title))
                             .add(new SimpleAttributeModifier("title", pageItem.description))
                             .add(new SimpleAttributeModifier("onclick", script)));
                     }
