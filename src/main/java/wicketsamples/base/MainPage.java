@@ -37,7 +37,6 @@ public class MainPage extends WebPage {
         setPageTitle(pageTitle);
         setDefaultModel(new CompoundPropertyModel(this));
 
-        add(JQuery.getHeaderContributions());
         add(JQuery.ready("$('#sections').tabs();"));
 
         add(new BookmarkablePageLink<Void>("homeLink", getApplication().getHomePage()));

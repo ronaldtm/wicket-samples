@@ -27,6 +27,7 @@ public class JQueryReadyHeaderContributor extends Behavior {
 
     @Override
     public void renderHead(Component component, IHeaderResponse response) {
+        JQuery.getHeaderContributions().renderHead(component, response);
         String javascript = ((target != null) ? "$('#" + target.getMarkupId() + "')." : "") + script;
         response.renderJavaScript(javascript, component.getMarkupId() + "_" + getClass().getSimpleName());
     }

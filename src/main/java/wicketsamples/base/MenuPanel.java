@@ -22,6 +22,8 @@ final class MenuPanel extends Panel {
         super(id);
         setOutputMarkupId(true);
 
+        add(JQuery.ready(this, "accordion();"));
+
         add(new ListView<PageCategory>("categories", model) {
             private static final long serialVersionUID = 1;
 
@@ -49,6 +51,5 @@ final class MenuPanel extends Panel {
                 });
             }
         });
-        add(JQuery.ready(this, "accordion();"));
     }
 }
