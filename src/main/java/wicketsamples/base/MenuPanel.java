@@ -1,10 +1,5 @@
 package wicketsamples.base;
 
-import java.util.List;
-
-import org.apache.wicket.IPageMap;
-import org.apache.wicket.PageMap;
-import org.apache.wicket.PageParameters;
 import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -13,10 +8,12 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import wicketsamples.PageCategory;
 import wicketsamples.PageItem;
 import wicketsamples.base.jquery.JQuery;
+
+import java.util.List;
 
 final class MenuPanel extends Panel {
     private static final long serialVersionUID = -7402552099056811629L;
@@ -35,14 +32,14 @@ final class MenuPanel extends Panel {
 
                 categoryItem.add(new ListView<PageItem>("links") {
                     private static final long serialVersionUID = 1;
+
                     @Override
                     protected void populateItem(ListItem<PageItem> listItem) {
                         PageItem pageItem = listItem.getModelObject();
 
-                        IPageMap pageMap = PageMap.forName(PageMap.DEFAULT_NAME);
-                        String pagePath = urlFor(pageMap, pageItem.pageClass, new PageParameters()).toString();
-                        String sourcePath = urlFor(pageMap, SourceCodePage.class,
-                            new PageParameters("pageClass=" + pageItem.pageClass.getName())).toString();
+                        String pagePath = urlFor(pageItem.pageClass, new PageParameters()).toString();
+                        String sourcePath = urlFor(SourceCodePage.class, new PageParameters().add("pageClass", pageItem.pageClass.getName()))
+                            .toString();
 
                         String script = String.format("openPage('%s','%s'); return false;", pagePath, sourcePath);
                         listItem.add(new Label("link", Model.of(pageItem.title))

@@ -34,13 +34,13 @@ public class AjaxFormPage extends WebPage {
             protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
                 info(contact.toString());
                 contact = new Contact();
-                target.addComponent(form);
-                target.addComponent(feedback);
+                target.add(form);
+                target.add(feedback);
             }
             @Override
             protected void onError(AjaxRequestTarget target, Form<?> form) {
-                target.addComponent(form);
-                target.addComponent(feedback);
+                target.add(form);
+                target.add(feedback);
             }
         });
     }

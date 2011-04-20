@@ -2,22 +2,28 @@ package wicketsamples.base.jquery;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.Component;
-import org.apache.wicket.behavior.HeaderContributor;
-import org.apache.wicket.markup.html.CSSPackageResource;
-import org.apache.wicket.markup.html.JavascriptPackageResource;
+import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.markup.html.IHeaderResponse;
 
 public class JQuery {
-    private static final HeaderContributor HEADER_CONTRIBUTION_JQUERY_UI_CSS = CSSPackageResource
-        .getHeaderContribution("http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/cupertino/jquery-ui.css");
-    private static final HeaderContributor HEADER_CONTRIBUTION_JQUERY_UI_JS = JavascriptPackageResource
-        .getHeaderContribution("http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js");
-    private static final HeaderContributor HEADER_CONTRIBUTION_JQUERY_JS = JavascriptPackageResource
-        .getHeaderContribution("http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js");
+    private static final String URL_JQUERY_UI_CSS =
+            "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/cupertino/jquery-ui.css";
+    private static final String URL_JQUERY_UI_JS =
+            "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js";
+    private static final String URL_JQUERY_JS =
+            "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js";
 
-    public static void addHeaderContributionsTo(Component component) {
-        component.add(HEADER_CONTRIBUTION_JQUERY_JS);
-        component.add(HEADER_CONTRIBUTION_JQUERY_UI_JS);
-        component.add(HEADER_CONTRIBUTION_JQUERY_UI_CSS);
+    private static final Behavior HEADER_CONTRIBUTIONS = new Behavior() {
+        @Override
+        public void renderHead(Component component, IHeaderResponse response) {
+            response.renderCSSReference(URL_JQUERY_UI_CSS);
+            response.renderJavaScriptReference(URL_JQUERY_JS);
+            response.renderJavaScriptReference(URL_JQUERY_UI_JS);
+        }
+    };
+
+    public static Behavior getHeaderContributions() {
+        return HEADER_CONTRIBUTIONS;
     }
 
     public static JQueryReadyHeaderContributor ready(String... scriptLines) {

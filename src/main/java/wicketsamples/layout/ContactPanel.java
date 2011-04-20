@@ -22,7 +22,7 @@ public class ContactPanel extends Panel {
         super(id, model);
         setOutputMarkupId(true);
 
-        Form<Contact> form = new Form<Contact>("form", new CompoundPropertyModel<Contact>(this.getDefaultModel()));
+        Form form = new Form("form", new CompoundPropertyModel(this.getDefaultModel()));
         add(form);
 
         form.add(new TextField("name").setRequired(true));
@@ -35,11 +35,11 @@ public class ContactPanel extends Panel {
             protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
                 info(form.getModelObject().toString());
                 model.setObject(new Contact());
-                target.addComponent(ContactPanel.this);
+                target.add(ContactPanel.this);
             }
             @Override
             protected void onError(AjaxRequestTarget target, Form<?> form) {
-                target.addComponent(ContactPanel.this);
+                target.add(ContactPanel.this);
             }
         });
 

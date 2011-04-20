@@ -1,12 +1,11 @@
 package wicketsamples.base.component;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.behavior.SimpleAttributeModifier;
-import org.apache.wicket.markup.html.WebMarkupContainerWithAssociatedMarkup;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.RepeatingView;
-
 import wicketsamples.base.jquery.JQuery;
 
 public class TabPanel extends Panel {
@@ -14,10 +13,11 @@ public class TabPanel extends Panel {
 
     RepeatingView handles;
     RepeatingView tabs;
+
     public TabPanel(String id) {
         super(id);
         setOutputMarkupId(true);
-        JQuery.addHeaderContributionsTo(this);
+        add(JQuery.getHeaderContributions());
 
         add(handles = new RepeatingView("handles"));
         add(tabs = new RepeatingView("tabs"));
@@ -25,7 +25,7 @@ public class TabPanel extends Panel {
         add(JQuery.ready(JQuery.$(this, ".tabs();")));
     }
 
-    public TabPanel append(String labelText, WebMarkupContainerWithAssociatedMarkup content) {
+    public TabPanel append(String labelText, Component content) {
         Fragment tab = new Fragment(tabs.newChildId(), "tab", this);
         tab.setOutputMarkupId(true);
         tab.add(new RepeatingView("container").add(content));

@@ -41,11 +41,11 @@ public class AjaxFileUploadPage extends WebPage {
                 } else {
                     info("No file sent");
                 }
-                target.addComponent(feedback);
+                target.add(feedback);
             }
             @Override
             protected void onError(AjaxRequestTarget target, Form<?> form) {
-                target.addComponent(feedback);
+                target.add(feedback);
             }
         });
     }

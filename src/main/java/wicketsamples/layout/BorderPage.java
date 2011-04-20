@@ -34,12 +34,12 @@ public class BorderPage extends WebPage {
             private static final long serialVersionUID = -7118298727205594967L;
             @Override
             protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-                target.addComponent(form);
-                target.appendJavascript("alert('" + contact + "');");
+                target.add(form);
+                target.appendJavaScript("alert('" + contact + "');");
             }
             @Override
             protected void onError(AjaxRequestTarget target, Form<?> form) {
-                target.addComponent(form);
+                target.add(form);
             }
         });
     }

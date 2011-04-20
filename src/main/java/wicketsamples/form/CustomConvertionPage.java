@@ -1,9 +1,6 @@
 package wicketsamples.form;
 
-import java.lang.reflect.Method;
-import java.text.ParseException;
-import java.util.Set;
-
+import com.google.common.collect.Sets;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -13,9 +10,11 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.convert.IConverter;
 
-import com.google.common.collect.Sets;
+import java.lang.reflect.Method;
+import java.text.ParseException;
+import java.util.Set;
 
-@SuppressWarnings({ "serial", "rawtypes", "unchecked" })
+@SuppressWarnings({"serial", "rawtypes", "unchecked"})
 public class CustomConvertionPage extends WebPage {
 
     Class<?> clazz;
@@ -29,8 +28,13 @@ public class CustomConvertionPage extends WebPage {
         add(form);
 
         TextField classField = new TextField("clazz") {
-            public IConverter getConverter(Class<?> type) {
-                return new ClassConverter();
+            @Override
+            public <C> IConverter<C> getConverter(Class<C> type) {
+                if (type.equals(Class.class)) {
+                    return (IConverter<C>) new ClassConverter();
+                } else {
+                    return super.getConverter(type);
+                }
             }
         };
         classField.setRequired(true);
@@ -39,6 +43,7 @@ public class CustomConvertionPage extends WebPage {
 
         form.add(new Button("send") {
             private static final long serialVersionUID = -3259847450071890320L;
+
             @Override
             public void onSubmit() {
                 Set<String> methodNames = Sets.newTreeSet();
