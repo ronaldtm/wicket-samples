@@ -1,4 +1,4 @@
-package wicketsamples.data;
+package wicketsamples.entity;
 
 import java.io.Serializable;
 import java.util.Date;

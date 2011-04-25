@@ -10,7 +10,7 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
-import wicketsamples.data.Contact;
+import wicketsamples.entity.Contact;
 
 @SuppressWarnings({ "serial", "rawtypes", "unchecked" })
 public class AjaxFormPage extends WebPage {

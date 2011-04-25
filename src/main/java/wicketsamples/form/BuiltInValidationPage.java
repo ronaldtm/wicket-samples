@@ -17,7 +17,7 @@ import org.apache.wicket.validation.validator.DateValidator;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
 import org.apache.wicket.validation.validator.MinimumValidator;
 import org.apache.wicket.validation.validator.StringValidator;
-import wicketsamples.data.Contact;
+import wicketsamples.entity.Contact;
 
 @SuppressWarnings({ "serial", "rawtypes", "unchecked" })
 public class BuiltInValidationPage extends WebPage {

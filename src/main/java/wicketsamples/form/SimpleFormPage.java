@@ -8,7 +8,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
-import wicketsamples.data.Contact;
+import wicketsamples.entity.Contact;
 
 @SuppressWarnings("unchecked")
 public class SimpleFormPage extends WebPage {

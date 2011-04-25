@@ -29,7 +29,7 @@ import org.apache.wicket.util.lang.WicketObjects;
 import wicketsamples.ajax.AutocompletePage;
 import wicketsamples.base.MainPage;
 import wicketsamples.base.config.AppConfig;
-import wicketsamples.data.Contact;
+import wicketsamples.entity.Contact;
 import wicketsamples.form.*;
 import wicketsamples.layout.*;
 
