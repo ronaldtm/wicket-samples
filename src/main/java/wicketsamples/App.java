@@ -6,7 +6,6 @@ import org.apache.wicket.Page;
 import org.apache.wicket.Session;
 import org.apache.wicket.devutils.inspector.InspectorPage;
 import org.apache.wicket.devutils.inspector.LiveSessionsPage;
-import org.apache.wicket.extensions.ajax.markup.html.form.upload.UploadWebRequest;
 import org.apache.wicket.markup.IMarkupCache;
 import org.apache.wicket.markup.MarkupCache;
 import org.apache.wicket.markup.MarkupFactory;
@@ -21,12 +20,12 @@ import org.apache.wicket.pageStore.memory.PageNumberEvictionStrategy;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
-import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.mapper.MountedMapper;
 import org.apache.wicket.session.HttpSessionStore;
 import org.apache.wicket.session.ISessionStore;
 import org.apache.wicket.util.IProvider;
-import wicketsamples.ajax.AjaxFileUploadPage;
+import org.apache.wicket.util.io.IObjectStreamFactory;
+import org.apache.wicket.util.lang.WicketObjects;
 import wicketsamples.ajax.AutocompletePage;
 import wicketsamples.base.MainPage;
 import wicketsamples.base.config.AppConfig;
@@ -36,7 +35,7 @@ import wicketsamples.layout.FieldBorder;
 import wicketsamples.layout.FragmentPage;
 import wicketsamples.layout.PanelPage;
 
-import javax.servlet.http.HttpServletRequest;
+import java.io.*;
 import java.util.List;
 
 public class App extends WebApplication {
@@ -75,6 +74,16 @@ public class App extends WebApplication {
         });
 
         getResourceSettings().setResourcePollFrequency(null);
+        WicketObjects.setObjectStreamFactory(new IObjectStreamFactory() {
+            @Override
+            public ObjectInputStream newObjectInputStream(InputStream in) throws IOException {
+                return new ObjectInputStream(in);
+            }
+            @Override
+            public ObjectOutputStream newObjectOutputStream(OutputStream out) throws IOException {
+                return new ObjectOutputStream(out);
+            }
+        });
 
         getSecuritySettings().setEnforceMounts(true);
 
@@ -91,11 +100,6 @@ public class App extends WebApplication {
         }
 
         mountPages();
-    }
-
-    @Override
-    protected WebRequest newWebRequest(HttpServletRequest servletRequest, String filterPath) {
-        return new UploadWebRequest(servletRequest, filterPath);
     }
 
     @Override
@@ -153,7 +157,6 @@ public class App extends WebApplication {
         categories.add(new PageCategory("ajax", "Ajax")
             .add(AjaxFormPage.class, "Ajax form", "Simple form with ajax submit", Contact.class)
             .add(AutocompletePage.class, "Auto-Complete", "Show matching options while you type")
-            .add(AjaxFileUploadPage.class, "File Upload", "Upload a file in an 'ajax-like' request")
         );
         categories.add(new PageCategory("layout", "Layout")
             .add(FragmentPage.class, "Fragment", "Reusing markup fragments")
