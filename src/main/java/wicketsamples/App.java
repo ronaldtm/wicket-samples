@@ -29,11 +29,9 @@ import org.apache.wicket.util.lang.WicketObjects;
 import wicketsamples.ajax.AutocompletePage;
 import wicketsamples.base.MainPage;
 import wicketsamples.base.config.AppConfig;
+import wicketsamples.data.Contact;
 import wicketsamples.form.*;
-import wicketsamples.layout.BorderPage;
-import wicketsamples.layout.FieldBorder;
-import wicketsamples.layout.FragmentPage;
-import wicketsamples.layout.PanelPage;
+import wicketsamples.layout.*;
 
 import java.io.*;
 import java.util.List;
@@ -160,7 +158,7 @@ public class App extends WebApplication {
         );
         categories.add(new PageCategory("layout", "Layout")
             .add(FragmentPage.class, "Fragment", "Reusing markup fragments")
-            .add(PanelPage.class, "Panel", "Creating reusable composite components with panels", Contact.class)
+            .add(PanelPage.class, "Panel", "Creating reusable composite components with panels", ContactPanel.class, Contact.class)
             .add(BorderPage.class, "Border", "Wrapping components with reusable borders", FieldBorder.class, Contact.class)
         );
         return categories;

@@ -10,7 +10,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
 
-import wicketsamples.form.Contact;
+import wicketsamples.data.Contact;
 
 @SuppressWarnings({ "serial", "rawtypes", "unchecked" })
 public class BorderPage extends WebPage {

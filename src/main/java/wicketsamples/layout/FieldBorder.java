@@ -13,9 +13,9 @@ public class FieldBorder extends Border {
     public FieldBorder(String id, String label, final FormComponent<?> component) {
         super(id);
 
-        add(new Label("label", label));
+        addToBorder(new Label("label", label));
 
-        add(new WebMarkupContainer("required") {
+        addToBorder(new WebMarkupContainer("required") {
             private static final long serialVersionUID = -2517917279014793049L;
             @Override
             public boolean isVisible() {
@@ -23,8 +23,8 @@ public class FieldBorder extends Border {
             }
         });
 
-        add(component);
+        addToBorderBody(component);
 
-        add(new FeedbackPanel("feedback", new ComponentFeedbackMessageFilter(component)));
+        addToBorder(new FeedbackPanel("feedback", new ComponentFeedbackMessageFilter(component)));
     }
 }

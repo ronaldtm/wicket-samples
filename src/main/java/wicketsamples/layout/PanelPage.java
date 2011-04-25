@@ -3,7 +3,7 @@ package wicketsamples.layout;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.PropertyModel;
 
-import wicketsamples.form.Contact;
+import wicketsamples.data.Contact;
 
 public class PanelPage extends WebPage {
 

@@ -1,4 +1,4 @@
-package wicketsamples.form;
+package wicketsamples.data;
 
 import java.io.Serializable;
 import java.util.Date;
